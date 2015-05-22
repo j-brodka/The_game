@@ -7,22 +7,43 @@
 #include "przeszkoda.h"
 #include <vector>
 
+Image * imageHERO = loadBMP("textures/hero.bmp");
+GLuint _textureIdHERO;
+
+
 void NPC::DrawNPC(void)
 {
-	glPushMatrix();
+	
+	glBindTexture(GL_TEXTURE_2D, _textureIdHERO); //Mówimy OpenGl jaka tekstura
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+	
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	glColor3d(0, 0, 0);
-	glTranslated(0, 0, 0);
-	glBegin(GL_POLYGON);
-	{
-		glVertex3d(-0.1, 0.1, 0);
-		glVertex3d(0.1, 0.1, 0);
-		glVertex3d(0.1, -0.1, 0);
-		glVertex3d(-0.1, -0.1, 0);
-	}
+	glTexImage2D(GL_TEXTURE_2D, //zawsze GL_TEXTURE_2D
+		0, //0 teraz
+		GL_RGB, //Format OpenGL u¿yty dla obrazu
+		imageHERO->width, imageHERO->height, //Szerokoœæ i wysokoœæ
+		0, //Ramka obrazu
+		GL_RGB, //GL_RGB, pixele s¹ w tym formacie
+		GL_UNSIGNED_BYTE, //GL_UNSIGNED_BYTE, pixele s¹ takimi zmiennymi
+		imageHERO->pixels);
+
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glBegin(GL_QUADS);
+
+	glNormal3f(0.0, 0.0f, 1.0f);
+	glTexCoord2f(0.0f, 0.0f);
+	glVertex3f(-0.063f, -0.1f, 0);
+	glTexCoord2f(0.0f, 1.0f);
+	glVertex3f(-0.063f, 0.1f, 0);
+	glTexCoord2f(1.0f, 1.0f);
+	glVertex3f(0.063f, 0.1f, 0);
+	glTexCoord2f(1.0f, 0.0f);
+	glVertex3f(0.063f, -0.1f, 0);
+
 	glEnd();
 
-	glPopMatrix();
 }
 
 void NPC::setX(double x)

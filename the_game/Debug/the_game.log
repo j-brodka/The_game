@@ -1,10 +1,11 @@
-﻿Build started 2015-05-11 21:10:40.
+﻿Build started 2015-05-22 15:14:15.
      1>Project "D:\Projects_VS\the_game\the_game\the_game.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files\Common Files\MSVC\freeglut\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt func.cpp przeszkoda.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files\Common Files\MSVC\freeglut\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source.cpp func.cpp przeszkoda.cpp
          przeszkoda.cpp
-     1>d:\projects_vs\the_game\the_game\przeszkoda.cpp(54): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\projects_vs\the_game\the_game\przeszkoda.cpp(150): warning C4018: '<' : signed/unsigned mismatch
          func.cpp
+         Source.cpp
          Generating Code...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Projects_VS\the_game\Debug\the_game.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files\Common Files\MSVC\freeglut\lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Projects_VS\the_game\Debug\the_game.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Projects_VS\the_game\Debug\the_game.lib" /MACHINE:X86 Debug\func.obj
@@ -17,4 +18,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.64
+Time Elapsed 00:00:03.73

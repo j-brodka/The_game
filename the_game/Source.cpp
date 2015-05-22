@@ -17,8 +17,6 @@ int main(int argc, char *argv[])
 
 	glutCreateWindow("OpenGLUT Shapes");
 
-	zaladujObrazy();
-
 	glutReshapeFunc(resize);
 	glutDisplayFunc(display);
 	glutIdleFunc(idle);
