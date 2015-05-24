@@ -147,7 +147,7 @@ void display(void)
 	glEnable(GL_TEXTURE_2D);
 
 	glPushMatrix();
-	player.DrawNPC();
+	player.DrawHERO();
 	glPopMatrix();
 
 

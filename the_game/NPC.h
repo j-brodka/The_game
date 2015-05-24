@@ -6,7 +6,7 @@ class NPC
 private:
 	Coords pozycja;
 public:
-	void DrawNPC(void);
+	void DrawHERO(void);
 	void setX(double x);
 	void setY(double y);
 	double getX();

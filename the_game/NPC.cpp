@@ -11,9 +11,8 @@ Image * imageHERO = loadBMP("textures/hero.bmp");
 GLuint _textureIdHERO;
 
 
-void NPC::DrawNPC(void)
+void NPC::DrawHERO(void)
 {
-	
 	glBindTexture(GL_TEXTURE_2D, _textureIdHERO); //Mówimy OpenGl jaka tekstura
 	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 	
@@ -34,16 +33,15 @@ void NPC::DrawNPC(void)
 
 	glNormal3f(0.0, 0.0f, 1.0f);
 	glTexCoord2f(0.0f, 0.0f);
-	glVertex3f(-0.063f, -0.1f, 0);
+	glVertex3f(-0.1f, -0.1f, 0);
 	glTexCoord2f(0.0f, 1.0f);
-	glVertex3f(-0.063f, 0.1f, 0);
+	glVertex3f(-0.1f, 0.1f, 0);
 	glTexCoord2f(1.0f, 1.0f);
-	glVertex3f(0.063f, 0.1f, 0);
+	glVertex3f(0.1f, 0.1f, 0);
 	glTexCoord2f(1.0f, 0.0f);
-	glVertex3f(0.063f, -0.1f, 0);
+	glVertex3f(0.1f, -0.1f, 0);
 
 	glEnd();
-
 }
 
 void NPC::setX(double x)
