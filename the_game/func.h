@@ -19,10 +19,10 @@ void onMouseButton(int button, int state, int x, int y);
 void display(void);
 void SpecialKeysFunc(int key, int x, int y);
 
-void zaladujObrazy();
-
 void kolizja();
 void okienko(int x);
 
+void SpawnHero();
+extern int scena;
 
 #endif

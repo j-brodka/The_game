@@ -6,6 +6,8 @@
 #include "imageloader.h"
 #include <vector>
 #include "przeszkoda.h"
+#include "scena.h"
+#include "enemy.h"
 using namespace std;
 
 bool ifKolizja=false;
@@ -27,15 +29,20 @@ void kolSpawn()
 
 void kolLawa()
 {
-	Coords first, second;
+	Coords first, second, third;
 	first.X = -5.3688;
-	first.Y = 2.0133;
+	first.Y = 1.7896;
 	second.X = -4.6977;
 	second.Y = 0.6711;
+	third.X = -4.474;
+	third.Y = 1.5659;
+	koord.push_back(third);
+	third.Y += 0.2237;
+	koord.push_back(third);
 	for (int i = 0; i < 8; i++)
 	{
 		first.X += 0.2237;
-		first.Y = 2.0133;
+		first.Y = 1.7896;
 		for (int i = 0; i < 5; i++)
 		{
 			first.Y += 0.2237;
@@ -52,6 +59,7 @@ void kolLawa()
 			koord.push_back(second);
 		}
 	}
+	
 }
 
 void kolLas1()		//Centralny
@@ -434,7 +442,7 @@ void kolLas4()			//po³udniowy
 			koord.push_back(seventh);
 		}
 	}
-	for (int i = 0; i < 14; i++)
+	for (int i = 0; i < 11; i++)
 	{
 		eighth.X -= 0.2237;
 		koord.push_back(eighth);

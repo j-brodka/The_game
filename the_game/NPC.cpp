@@ -5,11 +5,12 @@
 #include <GL/freeglut.h>
 #include "imageloader.h"
 #include "przeszkoda.h"
+#include "scena.h"
+#include "enemy.h"
 #include <vector>
 
 Image * imageHERO = loadBMP("textures/hero.bmp");
 GLuint _textureIdHERO;
-
 
 void NPC::DrawHERO(void)
 {
@@ -28,6 +29,32 @@ void NPC::DrawHERO(void)
 		GL_UNSIGNED_BYTE, //GL_UNSIGNED_BYTE, pixele s¹ takimi zmiennymi
 		imageHERO->pixels);
 
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glBegin(GL_QUADS);
+
+	glNormal3f(0.0, 0.0f, 1.0f);
+	glTexCoord2f(0.0f, 0.0f);
+	glVertex3f(-0.1f, -0.1f, 0);
+	glTexCoord2f(0.0f, 1.0f);
+	glVertex3f(-0.1f, 0.1f, 0);
+	glTexCoord2f(1.0f, 1.0f);
+	glVertex3f(0.1f, 0.1f, 0);
+	glTexCoord2f(1.0f, 0.0f);
+	glVertex3f(0.1f, -0.1f, 0);
+
+	glEnd();
+}
+
+void NPC::DrawNPC(GLuint _textureId, Image * image, double _x, double _y)
+{
+	glTranslated(_x, _y, 0);
+	glBindTexture(GL_TEXTURE_2D, _textureId); //Mówimy OpenGl jaka tekstura
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image->width, image->height, 0, GL_RGB, GL_UNSIGNED_BYTE, image->pixels);
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glBegin(GL_QUADS);
 
@@ -63,4 +90,13 @@ double NPC::getY()
 Coords NPC::getPozycja()
 {
 	return pozycja;
+}
+void NPC::lvlRaise(int x)
+{
+	level = x;
+}
+void NPC::setDamage(int min, int max)
+{
+	minDamage = min;
+	maxDamage = max;
 }

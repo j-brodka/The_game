@@ -30,6 +30,12 @@
     <ClCompile Include="przeszkoda.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="scena.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="func.h">
@@ -42,6 +48,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="przeszkoda.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="scena.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

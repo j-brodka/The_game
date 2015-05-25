@@ -49,6 +49,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Program Files\Common Files\MSVC\freeglut\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -66,17 +67,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="enemy.cpp" />
     <ClCompile Include="func.cpp" />
     <ClCompile Include="imageloader.cpp" />
     <ClCompile Include="przeszkoda.cpp" />
     <ClCompile Include="NPC.cpp" />
+    <ClCompile Include="scena.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="enemy.h" />
     <ClInclude Include="func.h" />
     <ClInclude Include="imageloader.h" />
     <ClInclude Include="NPC.h" />
     <ClInclude Include="przeszkoda.h" />
+    <ClInclude Include="scena.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

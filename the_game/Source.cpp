@@ -5,8 +5,12 @@
 #include <GL/freeglut.h>
 #include "imageloader.h"
 #include "przeszkoda.h"
+#include "scena.h"
 #include <vector>
+#include <Windows.h>
+#include <mmsystem.h>
 
+int scena;
 
 int main(int argc, char *argv[])
 {
@@ -15,7 +19,11 @@ int main(int argc, char *argv[])
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH | GLUT_MULTISAMPLE);
 
-	glutCreateWindow("OpenGLUT Shapes");
+	glutCreateWindow("Ultimate Adventure");
+
+	SpawnHero();
+
+	PlaySound("textures/fight_theme.wav", NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
 
 	glutReshapeFunc(resize);
 	glutDisplayFunc(display);

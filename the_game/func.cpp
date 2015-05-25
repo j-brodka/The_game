@@ -1,20 +1,25 @@
-#define _CRT_SECURE_NO_DEPRECATE
 #include <iostream>
 #define PI 3.14159265
 #include "func.h"
 #include "NPC.h"
 #include "imageloader.h"
 #include "przeszkoda.h"
+#include "scena.h"
+#include "enemy.h"
 #include <GL/freeglut.h>
 #include <vector>
 using namespace std;
 
-Image * imageMAP = loadBMP("textures/mapa.bmp");
-
 double moveX, moveY;
 int strona=0;
 
-GLuint _textureIdMAP;
+
+void SpawnHero()
+{
+	player.lvlRaise(1);
+	player.setDamage(3, 10);
+	scena = 0;
+}
 
 bool Coords::operator==(const Coords &a)
 {
@@ -45,7 +50,21 @@ void resize(int width, int height)
 
 void processNormalKeys(unsigned char key, int xx, int yy) 
 {
-	
+	switch (key)
+	{
+	case 27:
+	{
+
+			   exit(0);
+	}
+	case 32:
+	{
+			   if (scena == 0)
+				   scena = 1;
+			   else
+				   scena = 2;
+	}
+	}
 }
 void SpecialKeysFunc(int key, int x, int y)
 {
@@ -98,11 +117,6 @@ void SpecialKeysFunc(int key, int x, int y)
 						  strona = 4;
 						  break;
 	}
-	case 27:
-	{
-			   
-			   exit(0);
-	}
 	}
 
 }
@@ -143,35 +157,16 @@ void display(void)
 	
 	kolizja();
 	cofka();
-
-	glEnable(GL_TEXTURE_2D);
-
 	glPushMatrix();
-	player.DrawHERO();
+	
+	if (scena==0)
+		drawMenu();
+	else if (scena==1)
+		drawIntro();
+	else if (scena==2)
+		drawMap(moveX, moveY);
+
 	glPopMatrix();
-
-
-	glTranslated(moveX, moveY, 0);
-
-	glBindTexture(GL_TEXTURE_2D, _textureIdMAP);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imageMAP->width, imageMAP->height, 0, GL_RGB, GL_UNSIGNED_BYTE, imageMAP->pixels);
-	glColor3f(1.0f, 1.0f, 1.0f);
-	glBegin(GL_QUADS);
-
-	glNormal3f(0.0, 0.0f, 1.0f);
-	glTexCoord2f(0.0f, 0.0f);
-	glVertex3f(-10.5, -9, 0);
-	glTexCoord2f(0.0f, 1.0f);
-	glVertex3f(-10.5, 9, 0);
-	glTexCoord2f(1.0f, 1.0f);
-	glVertex3f(10.5, 9, 0);
-	glTexCoord2f(1.0f, 0.0f);
-	glVertex3f(10.5, -9, 0);
-
-	glEnd();
-
-	glDisable(GL_TEXTURE_2D);
-
 	glutSwapBuffers();
 }
 
