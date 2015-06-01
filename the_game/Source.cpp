@@ -10,7 +10,7 @@
 #include <Windows.h>
 #include <mmsystem.h>
 
-int scena;
+
 
 int main(int argc, char *argv[])
 {
@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 
 	SpawnHero();
 
-	PlaySound("textures/fight_theme.wav", NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
+	//PlaySound("textures/fight_theme.wav", NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
 
 	glutReshapeFunc(resize);
 	glutDisplayFunc(display);

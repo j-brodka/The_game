@@ -45,32 +45,6 @@ void NPC::DrawHERO(void)
 	glEnd();
 }
 
-void NPC::DrawNPC(GLuint _textureId, Image * image, double _x, double _y)
-{
-	glTranslated(_x, _y, 0);
-	glBindTexture(GL_TEXTURE_2D, _textureId); //Mówimy OpenGl jaka tekstura
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image->width, image->height, 0, GL_RGB, GL_UNSIGNED_BYTE, image->pixels);
-	glColor3f(1.0f, 1.0f, 1.0f);
-	glBegin(GL_QUADS);
-
-	glNormal3f(0.0, 0.0f, 1.0f);
-	glTexCoord2f(0.0f, 0.0f);
-	glVertex3f(-0.1f, -0.1f, 0);
-	glTexCoord2f(0.0f, 1.0f);
-	glVertex3f(-0.1f, 0.1f, 0);
-	glTexCoord2f(1.0f, 1.0f);
-	glVertex3f(0.1f, 0.1f, 0);
-	glTexCoord2f(1.0f, 0.0f);
-	glVertex3f(0.1f, -0.1f, 0);
-
-	glEnd();
-}
-
 void NPC::setX(double x)
 {
 	pozycja.X += x;
@@ -99,4 +73,8 @@ void NPC::setDamage(int min, int max)
 {
 	minDamage = min;
 	maxDamage = max;
+}
+bool NPC::isAlive()
+{
+	return alive;
 }

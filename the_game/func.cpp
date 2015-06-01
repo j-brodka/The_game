@@ -12,7 +12,7 @@ using namespace std;
 
 double moveX, moveY;
 int strona=0;
-
+int scena=0;
 
 void SpawnHero()
 {
@@ -156,6 +156,7 @@ void display(void)
 	glLoadIdentity();
 	
 	kolizja();
+	kolizjaEnemy();
 	cofka();
 	glPushMatrix();
 	
