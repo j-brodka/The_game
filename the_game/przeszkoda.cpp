@@ -13,6 +13,7 @@ using namespace std;
 bool ifKolizja=false;
 NPC player;
 vector<Coords>koord;
+vector<Coords>enemy;
 
 void kolSpawn()
 {
@@ -499,6 +500,28 @@ void kolLas4()			//po³udniowy
 	}
 }
 
+void kolizjaEnemy()
+{
+	enemy.push_back(black_knight.getPozycja());
+	enemy.push_back(cerber.getPozycja());
+	enemy.push_back(dwarf.getPozycja());
+	enemy.push_back(giant_spider.getPozycja());
+	enemy.push_back(hydra.getPozycja());
+	enemy.push_back(grimlud.getPozycja());
+	enemy.push_back(grund.getPozycja());
+	enemy.push_back(mad_axeman.getPozycja());
+	enemy.push_back(minotaur.getPozycja());
+	enemy.push_back(priestess.getPozycja());
+	enemy.push_back(priest.getPozycja());
+	enemy.push_back(ranger.getPozycja());
+	enemy.push_back(rehgar.getPozycja());
+	enemy.push_back(thraal.getPozycja());
+	enemy.push_back(uruk1.getPozycja());
+	enemy.push_back(uruk2.getPozycja());
+	enemy.push_back(uruk3.getPozycja());
+	enemy.push_back(varus.getPozycja());
+}
+
 void stworzKolizja()
 {
 	kolSpawn();
@@ -509,6 +532,20 @@ void stworzKolizja()
 	kolLas2();
 	kolLas3();
 	kolLas4();
+
+	kolizjaEnemy();
+
+	for (int i = 0; i < koord.size(); i++)
+	{
+		for (int j = 0; j < enemy.size(); j++)
+		{
+			if (koord[i] == enemy[j])
+			{
+				koord.erase(koord.begin() + i);
+				i = 0;
+			}
+		}
+	}
 }
 
 void kolizja()
@@ -524,3 +561,4 @@ void kolizja()
 			ifKolizja = true;
 	}
 }
+

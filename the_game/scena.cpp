@@ -15,8 +15,12 @@ Image * imageMENU = loadBMP("textures/menu.bmp");
 GLuint _textureIdMENU;
 Image * imageINTRO = loadBMP("textures/intro.bmp");
 GLuint _textureIdINTRO;
+Image * imageTABELA = loadBMP("textures/tabela.bmp");
+GLuint _textureIdTABELA;
 
-int nrEnemy = 0;
+GLuint _textureIdBATTLE;
+Image * imageBATTLE;
+
 
 void drawMenu()
 {
@@ -72,19 +76,46 @@ void drawIntro()
 	glDisable(GL_TEXTURE_2D);
 }
 
+void drawTable()
+{
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	glBindTexture(GL_TEXTURE_2D, _textureIdTABELA);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imageTABELA->width, imageTABELA->height, 0, GL_RGB, GL_UNSIGNED_BYTE, imageTABELA->pixels);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glBegin(GL_QUADS);
+
+	glNormal3f(0.0, 0.0f, 1.0f);
+	glTexCoord2f(0.0f, 0.0f);
+	glVertex3f(-0.5f, -0.25f, 0);
+	glTexCoord2f(0.0f, 1.0f);
+	glVertex3f(-0.5f, 0.25f, 0);
+	glTexCoord2f(1.0f, 1.0f);
+	glVertex3f(0.5f, 0.25f, 0);
+	glTexCoord2f(1.0f, 0.0f);
+	glVertex3f(0.5f, -0.25f, 0);
+
+	glEnd();
+
+}
+
 void drawMap(double moveX, double moveY)
 {
 	glEnable(GL_TEXTURE_2D);
 
 	glPushMatrix();
 	player.DrawHERO();
+	glTranslated(-1.51, -1.29, 0);
+	drawTable();
 	glPopMatrix();
 
-
+	glPushMatrix();
 	glTranslated(moveX, moveY, 0);
 
 	glPushMatrix();
-	inicjujEnemy();
+	rysujEnemy();
 	glPopMatrix();
 
 	glBindTexture(GL_TEXTURE_2D, _textureIdMAP);
@@ -104,14 +135,12 @@ void drawMap(double moveX, double moveY)
 
 	glEnd();
 
+	glPopMatrix();
 	glDisable(GL_TEXTURE_2D);
 }
 
-void drawBattle()
+void drawBattle(int nrEnemy)
 {
-	GLuint _textureIdBATTLE;
-	Image * imageBATTLE;
-
 	if (nrEnemy==1)
 		imageBATTLE = loadBMP("textures/battle/black_knight.bmp");
 	

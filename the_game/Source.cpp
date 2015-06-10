@@ -6,6 +6,7 @@
 #include "imageloader.h"
 #include "przeszkoda.h"
 #include "scena.h"
+#include "enemy.h"
 #include <vector>
 #include <Windows.h>
 #include <mmsystem.h>
@@ -23,12 +24,15 @@ int main(int argc, char *argv[])
 
 	SpawnHero();
 
-	//PlaySound("textures/fight_theme.wav", NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
+	PlaySound("textures/fight_theme.wav", NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
 
 	glutReshapeFunc(resize);
 	glutDisplayFunc(display);
 	glutIdleFunc(idle);
 
+	
+	inicjujEnemy();
+	inicjujEnemy2();
 	stworzKolizja();
 	glutKeyboardFunc(processNormalKeys);
 	glutSpecialFunc(SpecialKeysFunc);

@@ -21,6 +21,7 @@ void SpecialKeysFunc(int key, int x, int y);
 
 void kolizja();
 void okienko(int x);
+void inicjujEnemy2();
 
 void SpawnHero();
 extern int scena;

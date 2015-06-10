@@ -4,5 +4,6 @@
 void drawMap(double moveX, double moveY);
 void drawIntro();
 void drawMenu();
+void drawBattle(int nrEnemy);
 
 #endif

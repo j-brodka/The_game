@@ -9,6 +9,8 @@ private:
 	int minDamage;
 	int maxDamage;
 	bool alive;
+	int hp;
+	int nr;
 public:
 	void DrawHERO(void);
 	void DrawNPC(double _x, double _y);
@@ -17,9 +19,17 @@ public:
 	double getX();
 	double getY();
 	Coords getPozycja();
-	void lvlRaise(int x);
+	void setLVL(int x);
 	void setDamage(int min, int max);
+	void setAlive(bool x);
+	void setHP(int _hp);
+	void setNR(int _nr);
 	bool isAlive();
+	int returnNR();
+	int returnLVL();
+	int returnHP();
+	int returnDamageMin();
+	int returnDamageMax();
 };
 
 extern NPC player;

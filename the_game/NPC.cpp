@@ -65,7 +65,7 @@ Coords NPC::getPozycja()
 {
 	return pozycja;
 }
-void NPC::lvlRaise(int x)
+void NPC::setLVL(int x)
 {
 	level = x;
 }
@@ -77,4 +77,36 @@ void NPC::setDamage(int min, int max)
 bool NPC::isAlive()
 {
 	return alive;
+}
+void NPC::setAlive(bool x)
+{
+	alive = x;
+}
+void NPC::setHP(int _hp)
+{
+	hp = _hp;
+}
+void NPC::setNR(int _nr)
+{
+	nr = _nr;
+}
+int NPC::returnNR()
+{
+	return nr;
+}
+int NPC::returnLVL()
+{
+	return level;
+}
+int NPC::returnHP()
+{
+	return hp;
+}
+int NPC::returnDamageMin()
+{
+	return minDamage;
+}
+int NPC::returnDamageMax()
+{
+	return maxDamage;
 }
